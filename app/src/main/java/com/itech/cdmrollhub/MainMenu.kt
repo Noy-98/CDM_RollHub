@@ -4,10 +4,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.itech.cdmrollhub.dashboard.Attendance
 import com.itech.cdmrollhub.dashboard.Home
+import com.itech.cdmrollhub.dashboard.Logout
+import com.itech.cdmrollhub.dashboard.Payroll
 import com.itech.cdmrollhub.dashboard.Profile
-import com.itech.cdmrollhub.dashboard.Reports
 import com.itech.cdmrollhub.databinding.ActivityMainMenuBinding
 
 class MainMenu : AppCompatActivity() {
@@ -39,16 +39,16 @@ class MainMenu : AppCompatActivity() {
                     loadFragment(Home())
                     true
                 }
-                R.id.attendance -> {
-                    loadFragment(Attendance())
-                    true
-                }
-                R.id.reports -> {
-                    loadFragment(Reports())
+                R.id.payroll -> {
+                    loadFragment(Payroll())
                     true
                 }
                 R.id.profile -> {
                     loadFragment(Profile())
+                    true
+                }
+                R.id.logout -> {
+                    loadFragment(Logout())
                     true
                 }
                 else -> false

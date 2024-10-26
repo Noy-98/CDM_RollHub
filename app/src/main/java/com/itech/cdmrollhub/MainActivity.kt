@@ -19,8 +19,8 @@ class MainActivity : AppCompatActivity() {
         val fadeInAnimation = android.view.animation.AnimationUtils.loadAnimation(this, R.anim.fade_in)
         val scaleAnimation = android.view.animation.AnimationUtils.loadAnimation(this, R.anim.scale)
 
-        binding.main.startAnimation(fadeInAnimation)
-        binding.main.startAnimation(scaleAnimation)
+        binding.mainLogo.startAnimation(fadeInAnimation)
+        binding.mainLogo.startAnimation(scaleAnimation)
 
         Handler(Looper.getMainLooper()).postDelayed({
             startActivity(Intent(this, LoginActivity::class.java))

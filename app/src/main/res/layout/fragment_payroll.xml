@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".dashboard.Reports">
+    tools:context=".dashboard.Payroll">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -28,7 +28,7 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:layout_marginTop="20dp">
 
                     <com.google.android.material.imageview.ShapeableImageView
                         android:id="@+id/profilePic"
@@ -52,7 +52,7 @@
                         android:id="@+id/dashboardNameText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Reports"
+                        android:text="Payroll"
                         android:fontFamily="@font/poppins_bold"
                         android:textColor="@color/black"
                         android:textSize="20dp"
@@ -72,8 +72,11 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         android:layout_marginEnd="10dp"/>
+
                 </androidx.constraintlayout.widget.ConstraintLayout>
+
             </LinearLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -84,6 +87,7 @@
             android:layout_marginTop="0dp"
             android:background="@drawable/dashboard_bottom_background"
             android:orientation="vertical">
+
 
         </LinearLayout>
 

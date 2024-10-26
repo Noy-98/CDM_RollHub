@@ -5,19 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.itech.cdmrollhub.R
-import com.itech.cdmrollhub.databinding.FragmentAttendanceBinding
-import com.itech.cdmrollhub.databinding.FragmentHomeBinding
+import com.itech.cdmrollhub.databinding.FragmentPayrollBinding
 
-class Attendance : Fragment() {
+class Payroll : Fragment() {
 
-    private lateinit var binding: FragmentAttendanceBinding
+    private lateinit var binding: FragmentPayrollBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentAttendanceBinding.inflate(inflater, container, false)
+        binding = FragmentPayrollBinding.inflate(inflater, container, false)
         return binding.root
     }
 }

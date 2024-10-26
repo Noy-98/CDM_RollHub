@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "585354440639",
+    "firebase_url": "https://payroll-proj-default-rtdb.firebaseio.com",
+    "project_id": "payroll-proj",
+    "storage_bucket": "payroll-proj.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:585354440639:android:7bc142af84af5ec4f33b0a",
+        "android_client_info": {
+          "package_name": "com.itech.cdmrollhub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7SxXpZoTSG8yYHWtZ2e4Pnve0Gks0UW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

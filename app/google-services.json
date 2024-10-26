@@ -1,14 +1,14 @@
 {
   "project_info": {
-    "project_number": "585354440639",
-    "firebase_url": "https://payroll-proj-default-rtdb.firebaseio.com",
-    "project_id": "payroll-proj",
-    "storage_bucket": "payroll-proj.appspot.com"
+    "project_number": "20313181381",
+    "firebase_url": "https://cdm-payroll-system-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "cdm-payroll-system",
+    "storage_bucket": "cdm-payroll-system.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:585354440639:android:7bc142af84af5ec4f33b0a",
+        "mobilesdk_app_id": "1:20313181381:android:69e868936eae0a0748b4ac",
         "android_client_info": {
           "package_name": "com.itech.cdmrollhub"
         }
@@ -16,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyB7SxXpZoTSG8yYHWtZ2e4Pnve0Gks0UW8"
+          "current_key": "AIzaSyCgkO7dKTfDUQOsHlkK0KRKQQb3gEraCkQ"
         }
       ],
       "services": {

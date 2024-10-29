@@ -23,7 +23,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="30dp"
-        android:src="@drawable/circle_app_logo"
+        android:src="@drawable/main_logo"
         tools:ignore="ContentDescription"
         android:layout_gravity="center"/>
 

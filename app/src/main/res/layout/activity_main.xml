@@ -12,7 +12,7 @@
         android:id="@+id/mainLogo"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/circle_app_logo"
+        android:src="@drawable/main_logo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

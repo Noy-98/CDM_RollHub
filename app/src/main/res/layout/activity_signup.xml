@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignupActivity"
+    android:background="@drawable/main_background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/backgroud_color"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Signup"
+            android:textColor="@color/black"
+            android:textSize="32sp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins"
+            android:text="Employee ID"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="13sp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/input_box_1"
+            android:gravity="center"
+            android:hint="Enter your Employee ID"
+            android:padding="0dp"
+            android:textColorHint="@color/grey2"
+            app:hintTextColor="@color/grey2"
+            app:boxBackgroundMode="none"
+            app:errorTextColor="@color/red">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/employeeID"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:drawableStart="@drawable/baseline_assignment_ind_24"
+                android:drawablePadding="15dp"
+                android:drawableTint="@color/grey2"
+                android:fontFamily="@font/poppins"
+                android:inputType="text"
+                android:padding="0dp"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                tools:ignore="No"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins"
+            android:text="First Name"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="13sp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/input_box_1"
+            android:gravity="center"
+            android:hint="Enter your First Name"
+            android:padding="0dp"
+            android:textColorHint="@color/grey2"
+            app:hintTextColor="@color/grey2"
+            app:boxBackgroundMode="none"
+            app:errorTextColor="@color/red">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/firstName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:drawableStart="@drawable/baseline_person_24"
+                android:drawablePadding="15dp"
+                android:drawableTint="@color/grey2"
+                android:fontFamily="@font/poppins"
+                android:inputType="text"
+                android:padding="0dp"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                tools:ignore="No"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins"
+            android:text="last Name"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="13sp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/input_box_1"
+            android:gravity="center"
+            android:hint="Enter your Last Name"
+            android:padding="0dp"
+            android:textColorHint="@color/grey2"
+            app:hintTextColor="@color/grey2"
+            app:boxBackgroundMode="none"
+            app:errorTextColor="@color/red">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/lastName"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:drawableStart="@drawable/baseline_person_24"
+                android:drawablePadding="15dp"
+                android:drawableTint="@color/grey2"
+                android:fontFamily="@font/poppins"
+                android:inputType="text"
+                android:padding="0dp"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                tools:ignore="No"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins"
+            android:text="Email Address"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="13sp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/input_box_1"
+            android:gravity="center"
+            android:hint="Enter your Email"
+            android:padding="0dp"
+            android:textColorHint="@color/grey2"
+            app:hintTextColor="@color/grey2"
+            app:boxBackgroundMode="none"
+            app:errorTextColor="@color/red">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:drawableStart="@drawable/baseline_email_24"
+                android:drawablePadding="15dp"
+                android:drawableTint="@color/grey2"
+                android:fontFamily="@font/poppins"
+                android:inputType="textEmailAddress"
+                android:padding="0dp"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                tools:ignore="No"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins"
+            android:text="Password"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="13sp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/input_box_1"
+            android:gravity="center"
+            android:padding="0dp"
+            android:hint="Enter your Password"
+            android:textColorHint="@color/grey2"
+            app:hintTextColor="@color/grey2"
+            app:boxBackgroundMode="none"
+            app:endIconDrawable="@drawable/visibility_off"
+            app:passwordToggleEnabled="true"
+            app:errorTextColor="@color/red">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:drawableStart="@drawable/baseline_lock_24"
+                android:drawablePadding="15dp"
+                android:drawableTint="@color/grey2"
+                android:fontFamily="@font/poppins"
+                android:inputType="textPassword"
+                android:padding="0dp"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/poppins"
+            android:text="Confirm Password"
+            android:textAllCaps="true"
+            android:textColor="@color/black"
+            android:textSize="13sp"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/input_box_1"
+            android:gravity="center"
+            android:padding="0dp"
+            android:hint="Confirm Password"
+            android:textColorHint="@color/grey2"
+            app:hintTextColor="@color/grey2"
+            app:boxBackgroundMode="none"
+            app:endIconDrawable="@drawable/visibility_off"
+            app:passwordToggleEnabled="true"
+            app:errorTextColor="@color/red">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/confirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:drawableStart="@drawable/baseline_lock_24"
+                android:drawablePadding="15dp"
+                android:drawableTint="@color/grey2"
+                android:fontFamily="@font/poppins"
+                android:inputType="textPassword"
+                android:padding="0dp"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="40dp"
+            android:background="@drawable/btn_login"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Sign up"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="16sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_light"
+                android:text="Already Registered?"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/loginLink"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:fontFamily="@font/poppins"
+                android:text="Log in here."
+                android:textColor="@color/dark_green"
+                android:textStyle="bold"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/progressbar"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:lottie_rawRes="@raw/loading"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:visibility="gone"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

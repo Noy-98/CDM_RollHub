@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
+import com.itech.cdmrollhub.dashboard.TimeIn
 import com.itech.cdmrollhub.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
@@ -34,6 +35,15 @@ class LoginActivity : AppCompatActivity() {
         binding.btnSignIn.setOnClickListener {
             login()
         }
+
+        binding.signupLink.setOnClickListener {
+            handleSignUp()
+        }
+    }
+
+    private fun handleSignUp() {
+        val intent = Intent(this, SignupActivity::class.java)
+        startActivity(intent)
     }
 
     private fun login() {

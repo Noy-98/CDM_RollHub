@@ -138,10 +138,13 @@ class Home : Fragment() {
 
     private fun startUpdatingTime() {
         val timeFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
+        val amPmFormat = SimpleDateFormat("a", Locale.getDefault())
+
         timeRunnable = object : Runnable {
             override fun run() {
-                val currentTime = timeFormat.format(Date())
-                binding.time.text = currentTime
+                val currentTime = Date()
+                binding.time.text = timeFormat.format(currentTime)
+                binding.timeStatus.text = amPmFormat.format(currentTime)
                 timeHandler.postDelayed(this, 1000)
             }
         }

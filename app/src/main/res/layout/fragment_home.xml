@@ -95,7 +95,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="TODAY'S HOURS"
+                            android:text="TODAY'S TIME"
                             android:fontFamily="@font/poppins_bold"/>
 
                         <androidx.constraintlayout.widget.ConstraintLayout
@@ -117,9 +117,10 @@
                                 android:layout_marginTop="10dp"/>
 
                             <TextView
+                                android:id="@+id/timeStatus"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="hrs"
+                                android:text="am/pm"
                                 android:fontFamily="@font/poppins"
                                 android:layout_marginStart="5dp"
                                 app:layout_constraintTop_toTopOf="parent"

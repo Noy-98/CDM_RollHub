@@ -10,7 +10,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.ListenerRegistration
 import com.itech.cdmrollhub.R
 import com.itech.cdmrollhub.databinding.FragmentHomeBinding
@@ -23,9 +26,9 @@ class Home : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
     private val firebaseAuth = FirebaseAuth.getInstance()
+    private val databaseRef = FirebaseDatabase.getInstance().reference
     private val timeHandler = Handler(Looper.getMainLooper())
     private lateinit var timeRunnable: Runnable
-    private var userListener: ListenerRegistration? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +38,16 @@ class Home : Fragment() {
 
         displayProfilePicture()
         startUpdatingTime()
+        fetchEmployeeSession()
+
+        binding.resetBttn.setOnClickListener { resetEmployeeSession() }
+
+        setupFragmentNavigation()
+
+        return binding.root
+    }
+
+    private fun setupFragmentNavigation() {
 
         binding.notificationBttn.setOnClickListener {
             val notificationFragment = Notification()
@@ -52,10 +65,10 @@ class Home : Fragment() {
                 .commit()
         }
 
-        binding.historyBttn.setOnClickListener {
-            val historyFragment = History()
+        binding.statusBttn.setOnClickListener {
+            val statusFragment = Status()
             parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, historyFragment)
+                .replace(R.id.fragment_container, statusFragment)
                 .addToBackStack(null)
                 .commit()
         }
@@ -75,8 +88,52 @@ class Home : Fragment() {
                 .addToBackStack(null)
                 .commit()
         }
+    }
 
-        return binding.root
+    private fun resetEmployeeSession() {
+        val currentUserId = firebaseAuth.currentUser?.uid ?: return
+        val sessionRef = databaseRef.child("EmployeeSessionTbl").child(currentUserId).child("Session")
+
+        sessionRef.setValue(
+            mapOf(
+                "date_stamp" to "YYYY-MM-DD",
+                "session_id" to "0",
+                "time_in_stamp" to "00:00",
+                "time_out_stamp" to "00:00"
+            )
+        ).addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                Toast.makeText(requireContext(), "Session data reset.", Toast.LENGTH_SHORT).show()
+                binding.checkInTime.text = "00:00"
+                binding.checkOutTime.text = "00:00"
+            } else {
+                Toast.makeText(requireContext(), "Failed to reset session data.", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun fetchEmployeeSession() {
+        val currentUserId = firebaseAuth.currentUser?.uid ?: return
+        val sessionRef = databaseRef.child("EmployeeSessionTbl").child(currentUserId).child("Session")
+
+        sessionRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    val timeIn = snapshot.child("time_in_stamp").getValue(String::class.java) ?: "00:00"
+                    val timeOut = snapshot.child("time_out_stamp").getValue(String::class.java) ?: "00:00"
+
+                    binding.checkInTime.text = timeIn
+                    binding.checkOutTime.text = timeOut
+                } else {
+                    Toast.makeText(requireContext(), "No session data found.", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(requireContext(), "Error fetching session data.", Toast.LENGTH_SHORT).show()
+                Log.e("fetchEmployeeSession", "Error: ${error.message}")
+            }
+        })
     }
 
     private fun startUpdatingTime() {
@@ -94,7 +151,6 @@ class Home : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         timeHandler.removeCallbacks(timeRunnable) // Stop updating time when view is destroyed
-        userListener?.remove()
     }
 
     private fun displayProfilePicture() {

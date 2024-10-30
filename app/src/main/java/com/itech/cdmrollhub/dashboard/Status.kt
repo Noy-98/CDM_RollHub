@@ -5,17 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.itech.cdmrollhub.databinding.FragmentHistoryBinding
+import com.itech.cdmrollhub.databinding.FragmentStatusBinding
 
-class History : Fragment() {
+class Status : Fragment() {
 
-    private lateinit var binding: FragmentHistoryBinding
+    private lateinit var binding: FragmentStatusBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentHistoryBinding.inflate(inflater, container, false)
+        binding = FragmentStatusBinding.inflate(inflater, container, false)
         return binding.root
     }
 }

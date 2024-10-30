@@ -203,6 +203,21 @@
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"/>
                         </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/resetBttn"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginStart="40dp"
+                            android:layout_marginTop="30dp"
+                            android:layout_marginBottom="50dp"
+                            android:layout_marginEnd="40dp"
+                            android:background="@drawable/btn_reset"
+                            android:fontFamily="@font/poppins_medium"
+                            android:text="Reset"
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"/>
                     </LinearLayout>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
@@ -226,7 +241,7 @@
                     android:id="@+id/upcomingText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Upcoming"
+                    android:text="Dashboard Management"
                     android:textColor="@color/white"
                     android:fontFamily="@font/poppins_bold"
                     android:layout_marginTop="30dp"
@@ -332,7 +347,7 @@
                                     android:layout_width="30dp"
                                     android:layout_height="30dp"
                                     android:tint="#ECDB00"
-                                    android:src="@drawable/baseline_work_history_24"
+                                    android:src="@drawable/baseline_work_24"
                                     android:layout_marginTop="15dp"
                                     android:layout_marginStart="15dp"
                                     tools:ignore="UseAppTint" />
@@ -340,7 +355,7 @@
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="History"
+                                    android:text="Status"
                                     android:fontFamily="@font/poppins_bold"
                                     android:textColor="@color/black"
                                     android:textStyle="bold"
@@ -358,7 +373,7 @@
                                     android:layout_marginStart="15dp"/>
 
                                 <androidx.appcompat.widget.AppCompatButton
-                                    android:id="@+id/historyBttn"
+                                    android:id="@+id/statusBttn"
                                     android:layout_width="wrap_content"
                                     android:layout_height="20dp"
                                     android:layout_marginStart="15dp"

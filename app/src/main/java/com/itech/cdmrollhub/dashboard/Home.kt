@@ -40,12 +40,39 @@ class Home : Fragment() {
         startUpdatingTime()
         fetchEmployeeSession()
         fetchAndDisplayTotalCounts()
+        fetchAndDisplayEmployeeStatus()
 
         binding.resetBttn.setOnClickListener { resetEmployeeSession() }
 
         setupFragmentNavigation()
 
         return binding.root
+    }
+
+    private fun fetchAndDisplayEmployeeStatus() {
+        val currentUserId = firebaseAuth.currentUser?.uid ?: return
+
+        // Reference to the current user's employment status in EmployeeDataTbl
+        val employeeStatusRef = databaseRef.child("EmployeeDataTbl").child(currentUserId).child("employment_status")
+
+        employeeStatusRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    // Get the employment status and display it
+                    val employmentStatus = snapshot.getValue(String::class.java) ?: "Unknown"
+                    binding.employeeStatus.text = employmentStatus
+                } else {
+                    // Show "Unknown" if employment status does not exist
+                    binding.employeeStatus.text = "Unknown"
+                    Toast.makeText(requireContext(), "Employment status not found.", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("fetchAndDisplayEmployeeStatus", "Error fetching employment status: ${error.message}")
+                Toast.makeText(requireContext(), "Error fetching employment status.", Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 
     private fun fetchAndDisplayTotalCounts() {
@@ -57,7 +84,7 @@ class Home : Fragment() {
         val timeOutLogsRef = databaseRef.child("EmployeeSessionTbl").child(currentUserId).child("TimeOutLogs")
 
         // Fetch and count DateLogs sessions
-        dateLogsRef.addListenerForSingleValueEvent(object : ValueEventListener {
+        dateLogsRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val totalAttendanceCount = snapshot.childrenCount
                 binding.totalAttendance.text = totalAttendanceCount.toString()
@@ -69,7 +96,7 @@ class Home : Fragment() {
         })
 
         // Fetch and count TimeInLogs sessions
-        timeInLogsRef.addListenerForSingleValueEvent(object : ValueEventListener {
+        timeInLogsRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val totalTimeInCount = snapshot.childrenCount
                 binding.totalTimeIn.text = totalTimeInCount.toString()
@@ -81,7 +108,7 @@ class Home : Fragment() {
         })
 
         // Fetch and count TimeOutLogs sessions
-        timeOutLogsRef.addListenerForSingleValueEvent(object : ValueEventListener {
+        timeOutLogsRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val totalTimeOutCount = snapshot.childrenCount
                 binding.totalTimeOut.text = totalTimeOutCount.toString()
@@ -162,7 +189,7 @@ class Home : Fragment() {
         val currentUserId = firebaseAuth.currentUser?.uid ?: return
         val sessionRef = databaseRef.child("EmployeeSessionTbl").child(currentUserId).child("Session")
 
-        sessionRef.addListenerForSingleValueEvent(object : ValueEventListener {
+        sessionRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     val timeIn = snapshot.child("time_in_stamp").getValue(String::class.java) ?: "00:00"

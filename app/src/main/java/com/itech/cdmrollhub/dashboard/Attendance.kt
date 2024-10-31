@@ -2,6 +2,7 @@ package com.itech.cdmrollhub.dashboard
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,13 +18,16 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.itech.cdmrollhub.AttendanceAdapter
 import com.itech.cdmrollhub.AttendanceDBStructure
+import com.itech.cdmrollhub.R
 import com.itech.cdmrollhub.databinding.FragmentAttendanceBinding
+import com.squareup.picasso.Picasso
 
 class Attendance : Fragment() {
 
     private lateinit var binding: FragmentAttendanceBinding
     private lateinit var attendanceAdapter: AttendanceAdapter
     private lateinit var databaseReference: DatabaseReference
+    private val firebaseAuth = FirebaseAuth.getInstance()
     private lateinit var attendanceList: MutableList<AttendanceDBStructure>
     private lateinit var noPostText: TextView
 
@@ -46,8 +50,49 @@ class Attendance : Fragment() {
         noPostText = binding.noPostText
 
         loadAttendanceData()
+        displayProfilePicture()
+        setupFragmentNavigation()
 
         return binding.root
+    }
+
+    private fun setupFragmentNavigation() {
+        binding.notificationBttn.setOnClickListener {
+            val notificationFragment = Notification()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, notificationFragment)
+                .addToBackStack(null)
+                .commit()
+        }
+    }
+
+    private fun displayProfilePicture() {
+        val currentUserId = firebaseAuth.currentUser?.uid
+
+        if (currentUserId != null) {
+            val userRef = FirebaseDatabase.getInstance().getReference("usersTbl").child(currentUserId)
+
+            userRef.get().addOnSuccessListener { snapshot ->
+                if (snapshot.exists()) {
+                    val userMap = snapshot.value as? Map<String, Any?>
+                    if (userMap != null) {
+                        val profileImageUrl = snapshot.child("profilePicture").getValue(String::class.java)
+
+                        if (!profileImageUrl.isNullOrEmpty()) {
+                            Picasso.get().load(profileImageUrl).into(binding.profilePic)
+                        } else {
+                            binding.profilePic.setImageResource(R.drawable.camera_icon)
+                        }
+                    }
+                } else {
+                    Toast.makeText(requireContext(), "User Profile Picture does not exist!", Toast.LENGTH_SHORT).show()
+                }
+            }.addOnFailureListener {
+                Toast.makeText(requireContext(), "Failed to retrieve Profile Picture", Toast.LENGTH_SHORT).show()
+            }
+        } else {
+            Log.e("displayUser", "User is not logged in")
+        }
     }
 
     private fun loadAttendanceData() {

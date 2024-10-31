@@ -1,5 +1,6 @@
 package com.itech.cdmrollhub.dashboard
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -32,8 +33,13 @@ class Attendance : Fragment() {
     ): View? {
         binding = FragmentAttendanceBinding.inflate(inflater, container, false)
 
+        val currentUserId = FirebaseAuth.getInstance().currentUser?.uid ?: return binding.root
+        databaseReference = FirebaseDatabase.getInstance().getReference("EmployeeSessionTbl")
+            .child(currentUserId)
+            .child("DateLogs")
+
         attendanceList = mutableListOf()
-        attendanceAdapter = AttendanceAdapter(requireContext(), attendanceList)
+        attendanceAdapter = AttendanceAdapter(requireContext(), attendanceList, databaseReference)
         binding.attendanceList.adapter = attendanceAdapter
         binding.attendanceList.layoutManager = LinearLayoutManager(requireContext())
 
@@ -45,27 +51,20 @@ class Attendance : Fragment() {
     }
 
     private fun loadAttendanceData() {
-        val currentUserId = FirebaseAuth.getInstance().currentUser?.uid ?: return
-
-        databaseReference = FirebaseDatabase.getInstance().getReference("EmployeeSessionTbl").child(currentUserId).child("DateLogs")
-
-        // Listen for changes in the database
         databaseReference.addValueEventListener(object : ValueEventListener {
+            @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
                 attendanceList.clear()  // Clear previous data
 
                 if (snapshot.exists()) {
                     for (sessionSnapshot in snapshot.children) {
-
                         val sessionId = sessionSnapshot.key ?: ""
                         val dateStamp = sessionSnapshot.getValue(String::class.java) ?: ""
 
-                        // Ensure data is not empty before adding to the list
                         if (sessionId.isNotEmpty() && dateStamp.isNotEmpty()) {
                             attendanceList.add(AttendanceDBStructure(session_id = sessionId, date_stamp = dateStamp))
                         }
                     }
-
                     attendanceAdapter.notifyDataSetChanged()
                 } else {
                     noPostText.visibility = View.VISIBLE

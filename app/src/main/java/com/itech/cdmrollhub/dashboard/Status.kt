@@ -32,8 +32,31 @@ class Status : Fragment() {
         fetchAndDisplayEmployeeData()
         displayProfilePicture()
         setupFragmentNavigation()
+        checkForNotifications()
 
         return binding.root
+    }
+
+    private fun checkForNotifications() {
+        val currentUserId = firebaseAuth.currentUser?.uid ?: return
+        val notificationsRef = databaseRef.child("NotificationTbl").child(currentUserId)
+
+        notificationsRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                // Check if the snapshot has any children (notifications)
+                if (snapshot.exists() && snapshot.hasChildren()) {
+                    // Change ImageView color to red if there are notifications
+                    binding.notificationBttn.setColorFilter(resources.getColor(R.color.red), android.graphics.PorterDuff.Mode.SRC_IN)
+                } else {
+                    // Reset ImageView color if no notifications
+                    binding.notificationBttn.clearColorFilter()
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("checkForNotifications", "Error fetching notifications: ${error.message}")
+            }
+        })
     }
 
     private fun setupFragmentNavigation() {

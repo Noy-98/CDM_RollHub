@@ -14,7 +14,7 @@
         <LinearLayout
             android:id="@+id/top_background"
             android:layout_width="match_parent"
-            android:layout_height="330dp"
+            android:layout_height="100dp"
             android:background="@drawable/dashboard_top_background"
             android:layout_alignParentTop="true"
             android:gravity="center"
@@ -88,7 +88,43 @@
             android:background="@drawable/dashboard_bottom_background"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical"
+                android:layout_margin="20dp">
 
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/no_post_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="No Time Out Logs!"
+                            android:visibility="gone"
+                            android:textColor="@color/white"/>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/timeOutList"
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:listitem="@layout/time_out_item"/>
+                    </LinearLayout>
+
+                </ScrollView>
+
+            </LinearLayout>
         </LinearLayout>
 
     </RelativeLayout>

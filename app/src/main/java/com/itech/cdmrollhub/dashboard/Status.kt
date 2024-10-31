@@ -120,13 +120,13 @@ class Status : Fragment() {
 
                 } else {
 
-                    Toast.makeText(requireContext(), "Employmee data not found.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), "Employee data not found.", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Log.e("fetchAndDisplayEmployeeStatus", "Error fetching employmee data: ${error.message}")
-                Toast.makeText(requireContext(), "Error fetching employmee data.", Toast.LENGTH_SHORT).show()
+                Log.e("fetchAndDisplayEmployeeStatus", "Error fetching employee data: ${error.message}")
+                Toast.makeText(requireContext(), "Error fetching employee data.", Toast.LENGTH_SHORT).show()
             }
         })
     }

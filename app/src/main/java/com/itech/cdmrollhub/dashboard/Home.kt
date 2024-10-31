@@ -39,12 +39,58 @@ class Home : Fragment() {
         displayProfilePicture()
         startUpdatingTime()
         fetchEmployeeSession()
+        fetchAndDisplayTotalCounts()
 
         binding.resetBttn.setOnClickListener { resetEmployeeSession() }
 
         setupFragmentNavigation()
 
         return binding.root
+    }
+
+    private fun fetchAndDisplayTotalCounts() {
+        val currentUserId = firebaseAuth.currentUser?.uid ?: return
+
+        // Paths for each count category
+        val dateLogsRef = databaseRef.child("EmployeeSessionTbl").child(currentUserId).child("DateLogs")
+        val timeInLogsRef = databaseRef.child("EmployeeSessionTbl").child(currentUserId).child("TimeInLogs")
+        val timeOutLogsRef = databaseRef.child("EmployeeSessionTbl").child(currentUserId).child("TimeOutLogs")
+
+        // Fetch and count DateLogs sessions
+        dateLogsRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val totalAttendanceCount = snapshot.childrenCount
+                binding.totalAttendance.text = totalAttendanceCount.toString()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("fetchAndDisplayTotalCounts", "Error fetching DateLogs: ${error.message}")
+            }
+        })
+
+        // Fetch and count TimeInLogs sessions
+        timeInLogsRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val totalTimeInCount = snapshot.childrenCount
+                binding.totalTimeIn.text = totalTimeInCount.toString()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("fetchAndDisplayTotalCounts", "Error fetching TimeInLogs: ${error.message}")
+            }
+        })
+
+        // Fetch and count TimeOutLogs sessions
+        timeOutLogsRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val totalTimeOutCount = snapshot.childrenCount
+                binding.totalTimeOut.text = totalTimeOutCount.toString()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("fetchAndDisplayTotalCounts", "Error fetching TimeOutLogs: ${error.message}")
+            }
+        })
     }
 
     private fun setupFragmentNavigation() {

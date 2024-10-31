@@ -303,6 +303,7 @@
                                     android:layout_marginEnd="15dp"/>
 
                                 <TextView
+                                    android:id="@+id/totalAttendance"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="0"
@@ -364,6 +365,7 @@
                                     android:layout_marginStart="15dp"/>
 
                                 <TextView
+                                    android:id="@+id/emplyeeStatus"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="0"
@@ -431,6 +433,7 @@
                                     android:layout_marginStart="15dp"/>
 
                                 <TextView
+                                    android:id="@+id/totalTimeIn"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="0"
@@ -490,6 +493,7 @@
                                     android:layout_marginStart="15dp"/>
 
                                 <TextView
+                                    android:id="@+id/totalTimeOut"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="0"

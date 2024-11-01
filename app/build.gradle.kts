@@ -57,4 +57,6 @@ dependencies {
     implementation(libs.circleimageview)
     implementation(libs.picasso)
     implementation(libs.glide)
+
+    implementation ("com.applandeo:material-calendar-view:1.9.2")
 }

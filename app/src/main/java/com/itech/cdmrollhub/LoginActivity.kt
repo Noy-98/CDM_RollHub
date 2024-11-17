@@ -39,6 +39,15 @@ class LoginActivity : AppCompatActivity() {
         binding.signupLink.setOnClickListener {
             handleSignUp()
         }
+
+        binding.forgotPassLink.setOnClickListener {
+            handleForgotPasswordLink()
+        }
+    }
+
+    private fun handleForgotPasswordLink() {
+        val intent = Intent(this, ForgotPasswordActivity::class.java)
+        startActivity(intent)
     }
 
     private fun handleSignUp() {

@@ -43,7 +43,7 @@ class Home : Fragment() {
         fetchAndDisplayEmployeeStatus()
         checkForNotifications()
 
-        binding.resetBttn.setOnClickListener { resetEmployeeSession() }
+       /* binding.resetBttn.setOnClickListener { resetEmployeeSession() } */
 
         setupFragmentNavigation()
 
@@ -186,7 +186,7 @@ class Home : Fragment() {
         }
     }
 
-    private fun resetEmployeeSession() {
+   /* private fun resetEmployeeSession() {
         val currentUserId = firebaseAuth.currentUser?.uid ?: return
         val sessionRef = databaseRef.child("EmployeeSessionTbl").child(currentUserId).child("Session")
 
@@ -206,7 +206,7 @@ class Home : Fragment() {
                 Toast.makeText(requireContext(), "Failed to reset session data.", Toast.LENGTH_SHORT).show()
             }
         }
-    }
+    } */
 
     private fun fetchEmployeeSession() {
         val currentUserId = firebaseAuth.currentUser?.uid ?: return
